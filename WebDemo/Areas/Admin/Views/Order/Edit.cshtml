@@ -1,0 +1,85 @@
+﻿@model WebDemo.EF.Order
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Edit Order
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Enter Order information:
+
+            </div>
+            <div class="panel-body">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @using (Html.BeginForm("Edit", "Order", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <h4></h4>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ShipName, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                                        @Html.TextBoxFor(model => model.ShipName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ShipName, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ShipAddress, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                                        @Html.TextBoxFor(model => model.ShipAddress, new { htmlAttributes = new { @class = "form-control" }})
+                                        @Html.ValidationMessageFor(model => model.ShipAddress, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ShipMobile, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                                        @Html.TextBoxFor(model => model.ShipMobile, new { htmlAttributes = new { @class = "form-control" }})
+                                        @Html.ValidationMessageFor(model => model.ShipMobile, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ShipEmail, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                                        @Html.TextBoxFor(model => model.ShipEmail, new { htmlAttributes = new { @class = "form-control" }})
+                                        @Html.ValidationMessageFor(model => model.ShipEmail, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Edit" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿
+@model List<WebDemo.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+
+    <script src="/assets/client/controller/cartController.js"></script>
+}
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Product Code</td>
+                        <td>Product Name</td>
+                        <td>Product Image</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                        <td>Total</td>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Product.ID</td>
+                            <td>@item.Product.Name</td>
+                            <td><img src="@item.Product.Image" width="100px" /></td>
+                            <td><input type="text" class="txtQuatity" data-id="@item.Product.ID" value="@item.Quatity" /></td>
+                            <td>@item.Product.Price.GetValueOrDefault(0)$</td>
+                            <td>@(item.Product.Price.GetValueOrDefault(0) * item.Quatity)$</td>
+                            <td> <a href="#" data-id="@item.Product.ID" class="btn-delete"> Delete</a></td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td colspan="5"> Total:</td>
+                        <td>
+                            @{
+                                List<WebDemo.Models.CartItem> temp = (List<WebDemo.Models.CartItem>)Session["CartSession"];
+                                var total = String.Format("{0:N0}", temp.Sum(x => x.Quatity * x.Product.Price));
+                            }
+                            @total $
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+            <button id="btnContinue" class="btn btn-primary">Continue buying</button>
+            <button id="btnUpdate" class="btn btn-success btn btn-secondary">Update Cart </button>
+            <button id="btnDeleteAll" class="btn btn-secondary">Delete All Cart </button>
+            <button id="btnPay" class="btn btn-danger">Payment</button>
+            <button type="button"  class="btn btn-danger" onclick="location.href='@Url.Action("PaymentWithPayPal", "Cart")'">PaymentWithPayPal</button>
+
+
+
+        }
+        else
+        {
+            <span class="alert alert-danger">Nothing's in the cart yet! Please select the product.</span>
+        }
+    </div>
+    
+</div>
+
+

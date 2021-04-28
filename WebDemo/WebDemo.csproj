@@ -1953,6 +1953,10 @@
     <Content Include="assets\client\css\jquery-ui.css" />
     <Content Include="assets\client\css\slider.css" />
     <Content Include="assets\client\css\style.css" />
+    <Content Include="assets\client\images\1.jpg" />
+    <Content Include="assets\client\images\3.jpg" />
+    <Content Include="assets\client\images\4.jpg" />
+    <Content Include="assets\client\images\5.jpg" />
     <Content Include="assets\client\images\about_img.jpg" />
     <Content Include="assets\client\images\arrow-next.png" />
     <Content Include="assets\client\images\arrow-prev.png" />
@@ -2250,6 +2254,7 @@
     <Content Include="EF\OnlineShop.edmx.diagram">
       <DependentUpon>OnlineShop.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Product\ErrorImg.cshtml" />
     <None Include="Properties\PublishProfiles\OnlineShopElectric.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />

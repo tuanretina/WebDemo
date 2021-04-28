@@ -56,7 +56,8 @@ namespace WebDemo.Dao
                 cate.CreatedBy = entity.CreatedBy;
                 cate.CreatedDate = DateTime.Now;
                 cate.ModifiedBy = entity.ModifiedBy;
-                cate.ModifiedDate = DateTime.Now;   
+                cate.ModifiedDate = DateTime.Now;
+                cate.Status = entity.Status;
                 db.SaveChanges();
                 return true;
 

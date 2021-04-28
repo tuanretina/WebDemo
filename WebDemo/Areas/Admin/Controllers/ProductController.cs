@@ -25,6 +25,11 @@ namespace WebDemo.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult ErrorImg()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Add()
         {
@@ -58,13 +63,13 @@ namespace WebDemo.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ViewBag.msg = "File Size must be Equal or less than 1mb";
+                    return View("ErrorImg");
                 }
                 
             }
             else
             {
-                ViewBag.msg = "Inavlid File Type";
+                return View("ErrorImg");
             }
            
 

@@ -15,8 +15,8 @@ namespace WebDemo.Controllers
         {
             ViewBag.Slides = new SlideDao().ListAll();
             var productDao = new ProductDao1();
-            ViewBag.NewProducts = productDao.ListNewProduct(4);
-            ViewBag.ListFeatureProducts = productDao.ListFeatureProduct(4);
+            ViewBag.NewProducts = productDao.ListNewProduct(10);
+            ViewBag.ListFeatureProducts = productDao.ListFeatureProduct(10);
             return View();
         }
 

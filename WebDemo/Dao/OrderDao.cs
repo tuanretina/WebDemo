@@ -73,6 +73,8 @@ namespace WebDemo.Dao
                     on a.ID equals b.OrderID
                     join c in db.Products
                     on b.ProductID equals c.ID
+                    
+                    //on a.ShipEmail equals d.Email
                  
 
 
@@ -90,13 +92,12 @@ namespace WebDemo.Dao
                         Price = c.Price,
                         Product = c.Name,
                         Quantity = b.Quantity
-          
 
 
                     };
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.ShipName.Contains(searchString) || x.ShipAddress.Contains(searchString) || x.ShipMobile.Contains(searchString) || x.ShipEmail.Contains(searchString));
+                model = model.Where(x => x.ShipName.Contains(searchString) ||  x.ShipAddress.Contains(searchString) || x.ShipMobile.Contains(searchString) || x.ShipEmail.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }

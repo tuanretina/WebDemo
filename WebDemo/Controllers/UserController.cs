@@ -91,7 +91,7 @@ namespace WebDemo.Controllers
                     user.Password = model.Password;
                     user.Phone = model.Phone;
                     user.Email = model.Email;
-                    model.Address = model.Address;
+                    user.Address = model.Address;
                     user.CreateDate = DateTime.Now;
                     user.Status = true;
                     var result = dao.Insert(user);

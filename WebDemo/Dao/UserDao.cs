@@ -45,6 +45,7 @@ namespace WebDemo.Dao
                 user.UserName = entity.UserName;
                 user.ModifedBy = entity.ModifedBy;
                 user.ModifiedDate = DateTime.Now;
+                user.Status = entity.Status;
                 db.SaveChanges();
                 return true;
 
@@ -60,7 +61,7 @@ namespace WebDemo.Dao
             IQueryable<User> model = db.Users;
             if (!string.IsNullOrEmpty(seacrhString))
             {
-                model = model.Where(x => x.UserName.Contains(seacrhString) || x.Name.Contains(seacrhString));
+                model = model.Where(x => x.UserName.Contains(seacrhString) || x.Email.Contains(seacrhString) || x.Name.Contains(seacrhString));
             }
             return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
         }

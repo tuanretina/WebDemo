@@ -11,7 +11,7 @@ namespace WebDemo.ViewModel
         public DateTime? CreatedDate { get; set; }
         public string ShipAddress { get; set; }
         public string ShipName { get; set; }
-
+        public string CustomerID { get; set; }
         public long? UserID { get; set; }
         public string ShipMobile { get; set; }
         public string ShipEmail { get; set; }

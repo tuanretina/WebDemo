@@ -155,7 +155,8 @@ namespace WebDemo.Controllers
 
 
                 }
-            
+                Session.Remove(CartSession);
+
 
                 string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
 
@@ -302,6 +303,8 @@ namespace WebDemo.Controllers
                         }
                     }
                     Session.Add(guid, createdPayment.id);
+                    Session.Remove(CartSession);
+
                     return Redirect(paypalRedirectUrl);
                 }
 
@@ -313,6 +316,8 @@ namespace WebDemo.Controllers
                     if (executedPayment.state.ToLower() != "approved")
                     {
                         return View("Failure");
+                        Session.Remove(CartSession);
+
                     }
                 }
             }
@@ -320,8 +325,11 @@ namespace WebDemo.Controllers
             {
                 PaypalLogger.Log("Error: " + ex.Message);
                 return View("Failure");
+                Session.Remove(CartSession);
+
             }
             return View("Success");
+            Session.Remove(CartSession);
         }
     }
 }
